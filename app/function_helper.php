@@ -1468,52 +1468,12 @@ if (!function_exists('getProductDetailsStyle')) {
             default => 'livewire.' . config('constants.theme') . '.products.details',
         };
     }
+
+
 }
-// function getReturnRequest($limit = 10, $offset = 0, $sort = 'id', $order = 'desc', $search = '', $seller_id = '')
-// {
-//     $limit = request()->input('limit', 10);
-//     $offset = request()->input('offset', 0);
-//     $sort = request()->input('sort', 'id');
-//     $order = request()->input('order', 'ASC');
-//     $search = trim(request()->input('search', ''));
 
 
-//     $query = ReturnRequest::with(['user', 'product', 'orderItem.store'])
-//         ->whereHas('orderItem', function ($q) use ($seller_id) {
-//             $q->where('seller_id', $seller_id);
-//         });
-
-//     if (!empty($search)) {
-//         $query->whereHas('user', fn($q) => $q->where('username', 'like', "%$search%"))
-//             ->orWhereHas('product', fn($q) => $q->where('name', 'like', "%$search%"))
-//             ->orWhereHas('orderItem.store', fn($q) => $q->where('name', 'like', "%$search%"))
-//             ->orWhere('id', 'like', "%$search%")
-//             ->orWhereHas('orderItem', fn($q) => $q->where('order_id', 'like', "%$search%"));
-//     }
-
-//     $total = $query->count();
-
-//     $returnRequests = $query->orderBy($sort, $order)
-//         ->skip($offset)
-//         ->take($limit)
-//         ->get()->toArray();
-
-//     for ($i = 0; $i < count($returnRequests); $i++) {
-//         unset($returnRequests[$i]['user']);
-//         // unset($returnRequests[$i]['product']);
-//         // unset($returnRequests[$i]['order_item']);
-//     }
-
-//     $data = [
-//         'total' => $total,
-//         'data' => $returnRequests
-//     ];
-
-//     return $data;
-
-// }
-
-public function getCurrentStoreData($store_id)
+ function getCurrentStoreData($store_id)
 {
     $store_details = session('store_details');
     if ($store_details !== null && json_decode($store_details)[0]->id == $store_id) {
@@ -1528,6 +1488,7 @@ public function getCurrentStoreData($store_id)
 
     return $store_details;
 }
+
 
 function getReturnRequest($limit = 10, $offset = 0, $sort = 'id', $order = 'desc', $search = '', $seller_id = '', $languageCode = '')
 {
