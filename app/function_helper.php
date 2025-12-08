@@ -1513,6 +1513,22 @@ if (!function_exists('getProductDetailsStyle')) {
 
 // }
 
+public function getCurrentStoreData($store_id)
+{
+    $store_details = session('store_details');
+    if ($store_details !== null && json_decode($store_details)[0]->id == $store_id) {
+        $store_details = session('store_details');
+    } else {
+        $store_details = Store::where('id', $store_id)
+            ->where('status', 1)
+            ->get();
+        session()->forget("store_details");
+        session()->put("store_details", json_encode($store_details));
+    }
+
+    return $store_details;
+}
+
 function getReturnRequest($limit = 10, $offset = 0, $sort = 'id', $order = 'desc', $search = '', $seller_id = '', $languageCode = '')
 {
     $limit = request()->input('limit', 10);
@@ -1593,4 +1609,5 @@ function getReturnRequest($limit = 10, $offset = 0, $sort = 'id', $order = 'desc
         'total' => $total,
         'data' => $dataArray
     ];
+
 }
