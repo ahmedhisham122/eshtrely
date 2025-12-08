@@ -26,6 +26,7 @@ class UserController extends Controller
     use HandlesValidation;
     public function login()
     {
+        dd("test");
         return view('admin/pages/forms/login');
     }
     public function seller_login()
@@ -135,7 +136,7 @@ class UserController extends Controller
                 'image' => 'image|mimes:jpeg,gif,jpg,png',
             ];
         }
-        
+
         $user = User::find($id);
 
         // Check if the old password matches the one in the database
@@ -153,16 +154,16 @@ class UserController extends Controller
         }
 
         $userImgPath = public_path(config('constants.USER_IMG_PATH'));
-        
+
         if (!File::exists($userImgPath)) {
             File::makeDirectory($userImgPath, 0755, true);
         }
-        
-        
+
+
         if ($response =  $this->HandlesValidation($request, $rules)) {
             return $response;
         }
-        
+
 
         //----------------- image upload code ----------------------------
 
