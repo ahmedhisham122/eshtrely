@@ -59,7 +59,7 @@ Route::post('search_products', [ApiController::class, 'search_products'])->middl
 Route::post('get_most_searched_history', [ApiController::class, 'get_most_searched_history']);
 Route::get('get_paypal_link', [ApiController::class, 'get_paypal_link']);
 Route::get('/paypal_transaction_webview', [ApiController::class, 'paypal_transaction_webview'])->name('paypal_transaction_webview');
-Route::get('get_zones', [ApiController::class, 'get_zones'])->name('get_zones')->middleware('language');
+Route::get('get_zones', [ApiController::class, 'get_zones'])->name('api.get_zones')->middleware('language');
 Route::get('test', [ApiController::class, 'test'])->name('test');
 Route::get('handle_paystack_callback', [ApiController::class, 'handle_paystack_callback']);
 Route::get('get_phonepe_token', [ApiController::class, 'get_phonepe_token']);
