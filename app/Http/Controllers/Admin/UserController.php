@@ -26,7 +26,6 @@ class UserController extends Controller
     use HandlesValidation;
     public function login()
     {
-        dd("test");
         return view('admin/pages/forms/login');
     }
     public function seller_login()
