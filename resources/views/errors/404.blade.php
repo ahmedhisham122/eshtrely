@@ -1,3 +1,6 @@
+404
+
+{{--
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.css') }}">
@@ -146,3 +149,4 @@
         root.style.setProperty('--link-active-color', linkActiveColor);
         root.style.setProperty('--link-hover-color', linkHoverColor);
     </script>
+--}}
