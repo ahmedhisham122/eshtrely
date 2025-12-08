@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\TransactionController;
 use App\Libraries\Midtrans;
 use App\Libraries\Paystack;
 use App\Libraries\Razorpay;
