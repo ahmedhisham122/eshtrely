@@ -252,7 +252,7 @@
                         </div>
                 </div>
                 {{-- custom fields  --}}
-               
+
             </div>
             <div class="card p-5 mt-4">
                 <div class="row">
