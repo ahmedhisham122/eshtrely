@@ -85,7 +85,7 @@ Route::group(
         Route::prefix('admin')->group(function () {
 
             //categories
-    
+
             Route::resource("categories", CategoryController::class)->except(['show'])
                 ->missing(function (Request $request) {
                     return Redirect::route('categories.index');
@@ -133,7 +133,7 @@ Route::group(
             Route::get('categories/get_seller_categories_filter', [CategoryController::class, 'get_seller_categories_filter']);
 
             // blog categories
-    
+
             Route::resource("blogs", BlogController::class)->names([
                 'index' => 'admin.blogs.index',
             ])->except('show')->middleware('CheckDefaultStore');
@@ -152,7 +152,7 @@ Route::group(
             Route::put('/blog_category/update/{id}', [BlogController::class, 'updateCategory'])->name('blog_categories.update')->middleware(['demo_restriction'])->middleware('permissions:edit blog_categories');
 
             // blogs
-    
+
             Route::get('/manage_blogs', [BlogController::class, 'createBlog'])->name('manage_blogs.index');
 
             Route::post("/admin/manage_blogs", [BlogController::class, 'storeBlog'])->name('blogs.store')->middleware(['demo_restriction'])->middleware('permissions:create blogs');
@@ -170,7 +170,7 @@ Route::group(
             Route::put('/blogs/update/{id}', [BlogController::class, 'updateBlog'])->name('blogs.update')->middleware(['demo_restriction'])->middleware('permissions:edit blog_categories');
 
             //setting
-    
+
             Route::get('settings/', [SettingController::class, 'index'])->name('settings.index');
 
             Route::get("settings/system_settings", [SettingController::class, 'systemSettings'])->name('system_settings');
@@ -180,7 +180,7 @@ Route::group(
 
             // Route::get("settings/registration", [SettingController::class, 'registration'])->name('admin.system_registration');
             // Route::post("settings/system_registration", [SettingController::class, 'systemRegister'])->name('admin.system_register');
-    
+
             Route::post("settings/system_settings", [SettingController::class, 'storeSystemSetting'])->name('system_settings.store')->middleware(['demo_restriction'])->middleware('permissions:edit system_setting');
 
             Route::post("settings/removeSettingMedia", [SettingController::class, 'removeSettingMedia']);
@@ -251,7 +251,7 @@ Route::group(
             Route::get('/currency/update_status/{id}', [SettingController::class, 'updateCurrencyStatus'])->middleware(['demo_restriction'])->middleware('permissions:edit currency_setting');
 
             // web settings
-    
+
             Route::get('web_settings/', [SettingController::class, 'webSettings']);
 
             Route::post("settings/web_settings", [SettingController::class, 'storeWebSettings'])->name('web_settings.store')->middleware(['demo_restriction'])->middleware('permissions:edit web_general_setting');
@@ -267,18 +267,18 @@ Route::group(
             Route::post("settings/firebase_settings", [SettingController::class, 'storeFirebaseSettings'])->name('firebase_settings.store')->middleware(['demo_restriction'])->middleware('permissions:edit firebase_setting');
 
             // theme
-    
+
             Route::get("web_settings/theme", [SettingController::class, 'theme'])->name('theme');
 
 
             // sms gateway
-    
+
             Route::get("settings/sms_gateway", [SettingController::class, 'sms_gateway'])->name('sms_gateway');
 
             Route::post("/settings/store_sms_data", [SettingController::class, 'store_sms_data'])->name('store_sms_data.store')->middleware(['demo_restriction'])->middleware('permissions:edit sms_gateway_setting');
 
             // system policies
-    
+
             Route::get("settings/system_policies", [SettingController::class, 'systemPolicies'])->name('system_policies');
 
             Route::post("settings/privacy_policy", [SettingController::class, 'storePrivacyPolicy'])->name('privacy_policy.store')->middleware(['demo_restriction'])->middleware('permissions:edit system_policies');
@@ -290,7 +290,7 @@ Route::group(
             Route::post("settings/return_policy", [SettingController::class, 'storeReturnPolicy'])->name('return_policy.store')->middleware(['demo_restriction'])->middleware('permissions:edit system_policies');
 
             // admin , seller & delivery boy policies
-    
+
             Route::get("settings/admin_and_seller_policies", [SettingController::class, 'adminAndSellerPolicies'])->name('admin_and_seller_policies');
 
             Route::post("settings/admin_privacy_policy", [SettingController::class, 'storeAdminPrivacyPolicy'])->name('admin_privacy_policy.store')->middleware(['demo_restriction'])->middleware('permissions:edit admin_policies');
@@ -305,7 +305,7 @@ Route::group(
             Route::get("settings/seller_terms_and_conditions", [SettingController::class, 'sellerTermsAndCondition'])->name('seller_terms_and_conditions.view')->middleware(['demo_restriction'])->middleware('permissions:edit admin_policies');
 
             // delivery boy policies
-    
+
             Route::get("settings/delivery_boy_policies", [SettingController::class, 'deliveryBoyPolicies'])->name('delivery_boy_policies');
 
             Route::post("settings/delivery_boy_privacy_policy", [SettingController::class, 'storeDeliveryBoyPrivacyPolicy'])->name('delivery_boy_privacy_policy.store')->middleware(['demo_restriction'])->middleware('permissions:edit delivery_boy_policies');
@@ -313,7 +313,7 @@ Route::group(
             Route::post("settings/delivery_boy_terms_and_conditions", [SettingController::class, 'storeDeliveryBoyTermsAndConditions'])->name('delivery_boy_terms_and_conditions.store')->middleware(['demo_restriction'])->middleware('permissions:edit delivery_boy_policies');
 
             // brand
-    
+
             Route::resource("brands", BrandController::class)->names([
                 'index' => 'brands.index',
                 'edit' => 'brands.edit',
@@ -336,7 +336,7 @@ Route::group(
             Route::put('brands/update/{id}', [BrandController::class, 'update'])->middleware(['demo_restriction'])->middleware('permissions:edit brands');
 
             //taxes
-    
+
             Route::resource("taxes", TaxController::class)->names([
                 'index' => 'taxes.index',
                 'edit' => 'taxes.edit',
@@ -360,7 +360,7 @@ Route::group(
 
 
             //promocode
-    
+
             Route::resource("promo_codes", PromoCodeController::class)->names([
                 'index' => 'promo_codes.index',
             ])->except('show')->middleware('CheckDefaultStore');
@@ -380,7 +380,7 @@ Route::group(
         });
 
         //attributes
-    
+
         Route::resource("admin/attributes", AttributeController::class)->names([
             'index' => 'admin.attributes.index',
             'edit' => 'admin.attributes.edit',
@@ -396,7 +396,7 @@ Route::group(
         Route::get('attributes/destroy/{id}', [AttributeController::class, 'destroy'])->name('attributes.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete attributes');
 
         //products
-    
+
 
         Route::resource("admin/products", ProductController::class)->names([
             'index' => 'admin.products.index',
@@ -447,10 +447,11 @@ Route::group(
         Route::get("admin/product/delete_variant", [ProductController::class, 'delete_variant'])->name('admin.product.delete_variant')->middleware(['demo_restriction'])->middleware('permissions:delete product');
 
         //seller
-    
-        Route::resource("admin/sellers", SellerController::class)->names([
-            'index' => 'sellers.index',
-        ])->except('show')->middleware('CheckDefaultStore');
+
+        Route::resource('admin/sellers', SellerController::class)
+            ->names('sellers')  // This auto-creates sellers.index, sellers.create, etc.
+            ->except('show')
+            ->middleware('CheckDefaultStore');
 
         Route::get('admin/seller/create', [SellerController::class, 'create'])->name('admin.sellers.create');
 
@@ -475,7 +476,7 @@ Route::group(
         Route::get("admin/seller/get_seller_deliverable_type", [SellerController::class, 'get_seller_deliverable_type'])->name('admin.sellers.get_seller_deliverable_type');
 
         // Feature Section
-    
+
         Route::resource("admin/feature_section", FeaturedSectionsController::class)->names([
             'index' => 'feature_section.index',
             'edit' => 'feature_section.edit',
@@ -497,7 +498,7 @@ Route::group(
         Route::get('admin/feature_section/update_section_order', [FeaturedSectionsController::class, 'updateSectionOrder'])->name('feature_section.update_section_order');
 
         //Pickup loation
-    
+
         Route::resource("admin/pickup_location", PickupLocationController::class)->names([
             'index' => 'admin.pickup_location.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -509,7 +510,7 @@ Route::group(
         Route::get('admin/pickup_location/destroy/{id}', [PickupLocationController::class, 'destroy'])->name('admin.pickup_location.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete pickup_location');
         Route::get('admin/pickup_location/edit/{id}', [PickupLocationController::class, 'edit'])->name('admin.pickup_location.edit');
         // Orders Section
-    
+
         Route::resource("admin/orders", OrderController::class)->names([
             'index' => 'admin.orders.index',
             'edit' => 'admin.orders.edit',
@@ -545,7 +546,7 @@ Route::group(
         Route::post('admin/orders/update_receipt_status', [OrderController::class, 'update_receipt_status'])->name('admin.orders.update_receipt_status')->middleware(['demo_restriction'])->middleware('permissions:edit orders');
 
         // Return request
-    
+
         Route::resource("admin/return_request", ReturnRequestController::class)->names([
             'index' => 'admin.return_request.index',
         ])->except('show');
@@ -553,7 +554,7 @@ Route::group(
         Route::get('admin/return_request/list', [ReturnRequestController::class, 'list'])->name('admin.return_request.list');
 
         // Manage Stock
-    
+
         Route::resource("admin/manage_stock", ManageStockController::class)->names([
             'index' => 'admin.manage_stock.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -566,7 +567,7 @@ Route::group(
         Route::get('admin/manage_stock/edit/{id}', [ManageStockController::class, 'edit'])->name('admin.stock.edit');
 
         // Manage Combo Stock
-    
+
 
         Route::get('admin/manage_combo_stock', [ManageStockController::class, 'manage_combo_stock'])->name('admin.manage_combo_stock.index')->middleware('CheckDefaultStore');
 
@@ -578,7 +579,7 @@ Route::group(
         Route::get('admin/manage_combo_stock/edit/{id}', [ManageStockController::class, 'combo_stock_edit'])->name('admin.combo_stock.edit');
 
         // Payment request
-    
+
         Route::resource("admin/payment_request", PaymentRequestController::class)->names([
             'index' => 'admin.payment_request.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -587,7 +588,7 @@ Route::group(
 
 
         // slider
-    
+
         Route::resource("admin/sliders", SliderController::class)->names([
             'index' => 'sliders.index',
             'edit' => 'sliders.edit',
@@ -602,13 +603,13 @@ Route::group(
         Route::get('sliders/destroy/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete slider_images');
 
         //Chat
-    
+
         Route::resource("admin/chat", MessagesController::class)->names([
             'index' => 'admin.chat.index',
         ]);
 
         //offers
-    
+
         Route::resource("admin/offers", OfferController::class)->names([
             'index' => 'offers.index',
             'edit' => 'offers.edit',
@@ -622,7 +623,7 @@ Route::group(
         Route::get('offers/destroy/{id}', [OfferController::class, 'destroy'])->name('offers.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete offer_images');
 
         //product faqs
-    
+
         Route::resource("admin/product_faqs", ProductFaqController::class)->names([
             'index' => 'admin.product_faqs.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -635,7 +636,7 @@ Route::group(
         Route::put('admin/product_faqs/update/{id}', [ProductFaqController::class, 'update'])->middleware(['demo_restriction'])->middleware('permissions:edit product_faq');
 
         //combo product faqs
-    
+
         Route::resource("admin/combo_product_faqs", ComboProductFaqController::class)->names([
             'index' => 'admin.combo_product_faqs.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -648,7 +649,7 @@ Route::group(
 
 
         // media
-    
+
         Route::post('/admin/media/upload', [MediaController::class, 'upload'])->name('admin.media.upload')->middleware(['demo_restriction'])->middleware('permissions:create media');
 
         Route::get('/admin/media', [MediaController::class, 'index'])->name('admin.media');
@@ -671,7 +672,7 @@ Route::group(
 
 
         // delivery_boys
-    
+
         Route::resource("admin/delivery_boys", Delivery_boyController::class)->names([
             'index' => 'delivery_boys.index',
             'edit' => 'admin.delivery_boys.edit',
@@ -688,7 +689,7 @@ Route::group(
         Route::get('admin/delivery_boy/update_status/{id}', [Delivery_boyController::class, 'update_status'])->middleware(['demo_restriction'])->middleware('permissions:edit delivery_boy');
 
         // zipcodes
-    
+
         Route::get("admin/area/zipcodes", [AreaController::class, 'displayZipcodes'])->name('admin.display_zipcodes');
 
         Route::post("admin/area/store_zipcodes", [AreaController::class, 'storeZipcodes'])->name('admin.zipcodes.store')->middleware(['demo_restriction'])->middleware('permissions:create zipcodes');
@@ -711,7 +712,7 @@ Route::group(
         Route::put('admin/zipcodes/update/{id}', [AreaController::class, 'zipcodesUpdate'])->name('admin.zipcodes.update')->middleware(['demo_restriction'])->middleware('permissions:edit zipcodes');
 
         //city
-    
+
         Route::get("admin/area/city", [AreaController::class, 'displayCity'])->name('admin.display_city');
 
         Route::post("admin/area/city", [AreaController::class, 'storeCity'])->name('admin.city.store')->middleware('permissions:create city')->middleware(['demo_restriction'])->middleware('permissions:create city');
@@ -730,7 +731,7 @@ Route::group(
         Route::put('admin/city/update/{id}', [AreaController::class, 'cityUpdate'])->name('admin.city.update')->middleware(['demo_restriction'])->middleware('permissions:edit zipcodes');
 
         //area
-    
+
         Route::get("admin/area/", [AreaController::class, 'displayArea'])->name('admin.display_area');
 
         Route::post("admin/area/", [AreaController::class, 'storeArea'])->name('admin.area.store')->middleware(['demo_restriction']);
@@ -751,7 +752,7 @@ Route::group(
         Route::put('admin/area/update/{id}', [AreaController::class, 'areaUpdate'])->name('admin.area.update')->middleware(['demo_restriction']);
 
         // permissions and system users
-    
+
 
         Route::get('admin/system_users', [UserPermissionController::class, 'index'])->name('admin.system_users.index');
 
@@ -773,7 +774,7 @@ Route::group(
         Route::get('system_users/destroy/{id}', [UserPermissionController::class, 'destroy'])->name('system_user.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete system_user');
 
         // send notification
-    
+
         Route::get('admin/send_notification/', [NotificationController::class, 'index'])->name('notifications.index');
 
 
@@ -809,7 +810,7 @@ Route::group(
         Route::get('faqs/destroy/{id}', [FaqController::class, 'destroy'])->name('faqs.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete faq');
 
         // ticket system
-    
+
         Route::resource("admin/tickets/ticket_types", TicketController::class)->names([
             'index' => 'ticket_types.index',
         ])->except('show');
@@ -839,7 +840,7 @@ Route::group(
 
 
         // custom message
-    
+
         Route::resource("admin/custom_message", CustomMessageController::class)->names([
             'index' => 'admin.custom_message.index',
         ])->except('show');
@@ -858,7 +859,7 @@ Route::group(
         Route::get('admin/custom_message/{id}', [CustomMessageController::class, 'destroy'])->name('custom_message.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete custom_message');
 
         // customers
-    
+
         Route::get('admin/customers/', [UserController::class, 'customers'])->name('admin.customers');
 
         Route::get('/customers/list', [UserController::class, 'getCustomersList'])->name('customers.list');
@@ -885,9 +886,9 @@ Route::group(
         // Route::resource("admin/store", StoreController::class)->names([
         //     'index' => 'admin.stores.index',
         // ])->except('show');
-    
+
         // Route::post('admin/store', [StoreController::class, 'store'])->middleware(['demo_restriction'])->middleware('permissions:create store')->name('admin.stores.store');
-    
+
         Route::get('admin/stores/list', [StoreController::class, 'list'])->name('admin.stores.list');
 
         Route::get('admin/stores/manage_store', [StoreController::class, 'manage_store'])->name('admin.stores.manage_store');
@@ -912,7 +913,7 @@ Route::group(
 
 
         // offer sliders
-    
+
         Route::post("offers/offer_sliders", [OfferController::class, 'store_offer_slider'])->name('offer_sliders.store')->middleware(['demo_restriction'])->middleware('permissions:create offer_slider');
 
         Route::get('admin/offer_sliders', [OfferController::class, 'offer_slider'])->name('offer_sliders.index')->middleware('CheckDefaultStore');
@@ -930,7 +931,7 @@ Route::group(
         Route::put('admin/offer_sliders/update/{id}', [OfferController::class, 'offer_slider_update'])->middleware(['demo_restriction'])->middleware('permissions:edit offer_slider');
 
         // combo products attributes
-    
+
         Route::resource("admin/combo_product_attributes", ComboProductAttributeController::class)->names([
             'index' => 'admin.combo_product_attributes.index',
         ])->except('show')->middleware('CheckDefaultStore');
@@ -952,12 +953,12 @@ Route::group(
         Route::put('/admin/combo_product_attributes/update/{id}', [ComboProductAttributeController::class, 'update'])->middleware(['demo_restriction'])->middleware('permissions:edit combo_attributes');
 
         //combo products
-    
+
         Route::resource("admin/combo_products", ComboProductController::class)->names([
             'index' => 'admin.combo_products.index',
             'edit' => 'admin.combo_products.edit',
             // 'update' => 'admin.combo_products.update',
-    
+
         ])->except('show')->middleware('CheckDefaultStore');
 
         Route::get('admin/combo_products/destroy/{id}', [ComboProductController::class, 'destroy'])->name('admin.combo_products.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete combo_product');
@@ -986,7 +987,7 @@ Route::group(
         Route::post("admin/combo_product/bulk_upload", [ComboProductController::class, 'process_bulk_upload'])->name('admin.combo.product.process_bulk_upload')->middleware(['demo_restriction'])->middleware('permissions:create combo_product');
 
         // delivery boy cash collection
-    
+
         Route::get('admin/delivery_boys/manage_cash', [CashCollectionController::class, 'index'])->name('admin.get_cash_collection.index');
 
         Route::get('admin/delivery_boys/get_cash_collection', [CashCollectionController::class, 'list'])->name('admin.get_cash_collection');
@@ -996,7 +997,7 @@ Route::group(
         Route::post("admin/delivery_boys/manage_cash_collection", [Delivery_boyController::class, 'manage_cash_collection'])->name('admin.manage_cash_collection')->middleware(['demo_restriction'])->middleware('permissions:edit delivery_boy_cash_collection');
 
         //fund transfer
-    
+
         Route::post('admin/fund_transfer/add_fund_transfer', [FundTransferController::class, 'store'])->name('admin.add_fund_transfer')->middleware(['demo_restriction'])->middleware('permissions:create delivery_boy');
 
         Route::get('admin/delivery_boys/fund_transfers', [FundTransferController::class, 'index'])->name('admin.delivery_boys.fund_transfers.index');
@@ -1007,7 +1008,7 @@ Route::group(
         )->name('admin.fund.transfer.list');
 
         // language
-    
+
         Route::get("admin/settings/language", [LanguageController::class, 'index'])->name('language.index');
 
         Route::post('admin/settings/language', [LanguageController::class, 'store'])->name('language.store')->middleware(['demo_restriction']);
@@ -1030,7 +1031,7 @@ Route::group(
         Route::get("admin/web_settings/set-language/{locale}", [FrontLanguageController::class, 'setLanguage'])->name('front.set-language');
 
         // delete selected data routes
-    
+
         Route::delete('/categories/delete', [CategoryController::class, 'delete_selected_data'])->name('categories.delete')->middleware(['demo_restriction']);
 
         Route::delete('/categories_sliders/delete', [CategoryController::class, 'delete_selected_slider_data'])->name('categories_sliders.delete')->middleware(['demo_restriction']);
@@ -1084,7 +1085,7 @@ Route::group(
         Route::delete('/system_users/delete', [UserPermissionController::class, 'delete_selected_data'])->name('system_users.delete')->middleware(['demo_restriction']);
 
         // zones
-    
+
         Route::resource("admin/zones", ZoneController::class)->names([
             'index' => 'admin.zones.index',
         ])->except('show');
@@ -1174,8 +1175,8 @@ Route::group(
         Route::get('categories/bulk_upload', [CategoryController::class, 'bulk_upload']);
 
         Route::post("categories/bulk_upload", [CategoryController::class, 'process_bulk_upload'])->name('categories.bulk_upload')->middleware(['demo_restriction'])->middleware('permissions:create categories');
-        // custom fields 
-    
+        // custom fields
+
         Route::get("admin/store/custom_fields", [CustomFieldController::class, 'index'])->name('admin.custom_fields.index');
 
         Route::post('admin/store/custom_fields', [CustomFieldController::class, 'store'])->name('admin.custom_fields.store');
@@ -1187,7 +1188,7 @@ Route::group(
         Route::put('/custom_fields/update/{id}', [CustomFieldController::class, 'update'])->name('custom_fields.update')->middleware(['demo_restriction'])->middleware('permissions:edit custom_fields');
 
         Route::get('custom_fields/destroy/{id}', [CustomFieldController::class, 'destroy'])->name('custom_fields.destroy')->middleware(['demo_restriction'])->middleware('permissions:delete custom_fields');
-        
+
         Route::get('/admin/cities/search', [AreaController::class, 'getCities']);
 
     }
