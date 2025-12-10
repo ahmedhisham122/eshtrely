@@ -252,9 +252,7 @@
                         </div>
                 </div>
                 {{-- custom fields  --}}
-                @include('components.product.custom_fields', [
-                    'customFields' => $customFields,
-                ])
+               
             </div>
             <div class="card p-5 mt-4">
                 <div class="row">
