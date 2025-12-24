@@ -599,8 +599,7 @@ class CategoryController extends Controller
         // Convert category_ids string to array
         $categoryIds = $categoryIdsString ? explode(',', $categoryIdsString) : [];
 
-        
-        dd($store,$categoryIds,$seller);
+
 
         if (empty($categoryIds)) {
             return [];
@@ -623,9 +622,6 @@ class CategoryController extends Controller
             ->where('status', 1)
             ->where('store_id', $storeId)
             ->get();
-
-
-        dd($categories);
 
 
         $filteredCategories = [];

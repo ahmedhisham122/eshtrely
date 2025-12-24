@@ -242,6 +242,8 @@ class CategoryController extends Controller
             ->where('seller_id', $seller_id)
             ->first();
 
+        dd($seller_data);
+
         if (!$seller_data) {
             return response()->json([
                 'categories' => [],
