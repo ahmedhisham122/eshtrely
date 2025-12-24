@@ -168,8 +168,6 @@ class CategoryController extends Controller
         // Convert category_ids string to array
         $category_ids = $category_ids_str ? explode(',', $category_ids_str) : [];
 
-        dd($category_ids_str, $seller?->pivot);
-
         if (empty($category_ids)) {
             return [];
         }
