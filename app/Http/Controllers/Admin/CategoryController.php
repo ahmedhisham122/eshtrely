@@ -243,12 +243,12 @@ class CategoryController extends Controller
         $categoryData = Category::where('store_id', $storeId);
         $languageCode = app(TranslationService::class)->getLanguageCode();
 
-        
+
         // Apply search filter if provided
         if (!empty($search)) {
             $categoryData = Category::when($search, function ($query) use ($search, $languageCode) {
                 $jsonPath = "$." . $languageCode;
-    
+
                 return $query->whereRaw(
                     "LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, ?))) LIKE ?",
                     [$jsonPath, '%' . strtolower($search) . '%']
@@ -620,6 +620,10 @@ class CategoryController extends Controller
             ->where('status', 1)
             ->where('store_id', $storeId)
             ->get();
+
+
+        dd($categories);
+
 
         $filteredCategories = [];
         $languageCode = app(TranslationService::class)->getLanguageCode();
