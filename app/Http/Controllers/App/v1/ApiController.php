@@ -578,6 +578,8 @@ Defined Methods:-
 
             $language_code = $request->attributes->get('language_code');
 
+            dd($type);
+
 
             if ($type == 'all' || $type == 'payment_method') {
 
