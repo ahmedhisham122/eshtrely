@@ -557,6 +557,9 @@ Defined Methods:-
             limit:25            // { default - 25 } optional
             offset:0            // { default - 0 } optional
         */
+
+        dd($request->type);
+
         $rules = [
             'type' => 'sometimes|in:payment_method,store_setting',
             'user_id' => 'sometimes|numeric|exists:users,id',
@@ -578,7 +581,7 @@ Defined Methods:-
 
             $language_code = $request->attributes->get('language_code');
 
-            dd($type);
+
 
 
             if ($type == 'all' || $type == 'payment_method') {
