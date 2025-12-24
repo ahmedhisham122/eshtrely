@@ -51,6 +51,7 @@ class SettingService
             return null;
         }
 
+
         $settingsArray = json_decode($settingValue, true) ?? [];
 
         // Attach currency only for system_settings
