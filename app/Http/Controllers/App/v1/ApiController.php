@@ -558,7 +558,6 @@ Defined Methods:-
             offset:0            // { default - 0 } optional
         */
 
-        dd($request->type);
 
         $rules = [
             'type' => 'sometimes|in:payment_method,store_setting',
@@ -620,6 +619,8 @@ Defined Methods:-
                             'code' => 401,
                         ], 401);
                     }
+
+                    dd($type);
 
                     $settings_res['payment_method'] = app(SettingService::class)->getSettings($type, $settings[$type]);
                     $settings_res['payment_method'] = json_decode($settings_res['payment_method'], true);
