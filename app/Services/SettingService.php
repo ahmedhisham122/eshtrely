@@ -61,7 +61,7 @@ class SettingService
 
         if($type == "payment_method")
         {
-            dd($settingsArray);
+            dd($settingsArray,$settingValue);
         }
 
         $result = $isJson
