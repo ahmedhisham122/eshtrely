@@ -624,7 +624,7 @@ Defined Methods:-
 
                     $settings_res['payment_method'] = app(SettingService::class)->getSettings($type, $settings[$type]);
                     $settings_res['payment_method'] = [ 'cod_method' => [1]];
-                    
+
                     if (isset($user_id) && !empty($user_id)) {
                         $cart_total_response = app(CartService::class)->getCartTotal($user_id, false, 0, '', $store_id);
 
@@ -634,11 +634,8 @@ Defined Methods:-
                         $settings_res['is_cod_allowed'] = 1;
                     }
 
-
-
                     $general_settings = $settings_res;
 
-                    dd($general_settings);
 
                 } else {
                     foreach ($settings as $type => $isjson) {
