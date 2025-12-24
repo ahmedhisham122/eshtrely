@@ -599,6 +599,9 @@ class CategoryController extends Controller
         // Convert category_ids string to array
         $categoryIds = $categoryIdsString ? explode(',', $categoryIdsString) : [];
 
+        
+        dd($store,$categoryIds,$seller);
+
         if (empty($categoryIds)) {
             return [];
         }
