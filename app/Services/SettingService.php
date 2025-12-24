@@ -46,11 +46,6 @@ class SettingService
 
         $settingValue = Setting::where('variable', $type)->value('value');
 
-        if($type == "payment_method")
-        {
-            dd($settingValue);
-        }
-
 
         if (is_null($settingValue)) {
             return null;
@@ -70,6 +65,11 @@ class SettingService
 
         $cache[$type]['raw'] = htmlspecialchars_decode(json_encode($settingsArray));
         $cache[$type]['json'] = json_encode($settingsArray);
+
+        if($type == "payment_method")
+        {
+           dd($cache,$result);
+        }
 
         return $result;
     }
