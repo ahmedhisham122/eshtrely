@@ -45,6 +45,9 @@ class SettingService
         }
 
         $settingValue = Setting::where('variable', $type)->value('value');
+
+        dd($settingValue);
+
         if (is_null($settingValue)) {
             return null;
         }
@@ -66,5 +69,5 @@ class SettingService
 
         return $result;
     }
-    
+
 }
