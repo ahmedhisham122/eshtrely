@@ -168,6 +168,8 @@ class CategoryController extends Controller
         // Convert category_ids string to array
         $category_ids = $category_ids_str ? explode(',', $category_ids_str) : [];
 
+        dd($category_ids,$store,$seller);
+
         if (empty($category_ids)) {
             return [];
         }
@@ -242,7 +244,6 @@ class CategoryController extends Controller
             ->where('seller_id', $seller_id)
             ->first();
 
-        dd($seller_data);
 
         if (!$seller_data) {
             return response()->json([
