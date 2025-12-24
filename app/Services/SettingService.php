@@ -59,10 +59,6 @@ class SettingService
             $settingsArray['ai_setting'] = app(SettingService::class)->getAiSettings();
         }
 
-        if($type == "payment_method")
-        {
-            dd($settingsArray,$settingValue);
-        }
 
         $result = $isJson
             ? json_encode($settingsArray)

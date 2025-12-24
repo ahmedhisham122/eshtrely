@@ -625,7 +625,7 @@ Defined Methods:-
                     $settings_res['payment_method'] = app(SettingService::class)->getSettings($type, $settings[$type]);
                     $settings_res['payment_method'] = json_decode($settings_res['payment_method'], true);
 
-                    dd( $settings_res['payment_method'],$settings[$type]);
+                 //   dd( $settings_res['payment_method'],$settings[$type]);
 
                     if (isset($user_id) && !empty($user_id)) {
                         $cart_total_response = app(CartService::class)->getCartTotal($user_id, false, 0, '', $store_id);
