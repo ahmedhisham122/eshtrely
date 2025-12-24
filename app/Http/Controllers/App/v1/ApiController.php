@@ -620,7 +620,7 @@ Defined Methods:-
                         ], 401);
                     }
 
-                    dd($type);
+
 
                     $settings_res['payment_method'] = app(SettingService::class)->getSettings($type, $settings[$type]);
                     $settings_res['payment_method'] = json_decode($settings_res['payment_method'], true);
