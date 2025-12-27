@@ -113,17 +113,25 @@ class ProductController extends Controller
     {
 
         $store_id = !empty(request('store_id')) ? request('store_id') : app(StoreService::class)->getStoreId();
-        // dd('here');
+
+
+        $request->merge([
+            'product_type' => 'physical_product',
+        ]);
+
+
         $validator = Validator::make($request->all(), [
             'pro_input_name' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
             'pro_input_image' => 'required',
-            'product_type' => 'required',
             // 'seller_id' => 'required',
             'deliverable_type' => 'required',
             'slug' => generateSlug($request->input('pro_input_name'), 'products'),
         ]);
+
+
+
 
         if (request()->has('product_type') && request()->input('product_type') == 'simple_product') {
             $validator->sometimes(
@@ -203,9 +211,9 @@ class ProductController extends Controller
         $validator->setCustomMessages(array_merge($validator->customMessages, $messages));
         // if ($validator->fails()) {
         //     return $request->ajax()
-        //     ? response()->json(['errors' => $validator->errors()->all()], 422)  
+        //     ? response()->json(['errors' => $validator->errors()->all()], 422)
         //     : redirect()->back()->withErrors($validator)->withInput();
-        // } 
+        // }
         if ($validator->fails()) {
             if ($fromApp == true) {
                 return response()->json([
@@ -888,11 +896,17 @@ class ProductController extends Controller
             return response()->json(['error' => true, 'message' => labels('admin_labels.unauthorized_access', 'Unauthorized access to this product!')]);
         }
 
+        $request->merge([
+            'product_type' => 'physical_product',
+        ]);
+
         $validator = Validator::make($request->all(), [
             'pro_input_name' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+
 
         if (request()->has('product_type') && request()->input('product_type') == 'simple_product') {
             $validator->sometimes(

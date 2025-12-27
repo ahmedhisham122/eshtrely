@@ -36,19 +36,7 @@
                 </h6>
                 <div class="col-md-12 mt-4">
                     <div class="row">
-                        <div class="col-md-6">
-                            {{ labels('admin_labels.choose_product_type', 'Choose Product Type') }}<span
-                                class='text-asterisks text-sm'>*</span>
-                            <select class='form-control mt-4' name='product_type_menu' id="product_type_menu">
-                                <option value="">Select Product Type</option>
-                                <option value="physical_product">
-                                    {{ labels('admin_labels.physical_product', 'Physical Product') }}
-                                </option>
-                                <option value="digital_product">
-                                    {{ labels('admin_labels.digital_product', 'Digital Product') }}
-                                </option>
-                            </select>
-                        </div>
+
                         <div class="col-md-6">
                             {{ labels('admin_labels.select_category', 'Select Product Category') }}<span
                                 class='text-asterisks text-sm'>*</span>
@@ -252,7 +240,7 @@
                 </div>
 
                 {{-- custom fields  --}}
-              
+
             </div>
             <div class="card p-5 mt-4">
                 <div class="row">
