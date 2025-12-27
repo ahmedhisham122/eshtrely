@@ -897,7 +897,7 @@ class ProductController extends Controller
         }
 
         $request->merge([
-            'product_type' => 'physical_product',
+            'product_type' => 'simple_product',
         ]);
 
         $validator = Validator::make($request->all(), [
