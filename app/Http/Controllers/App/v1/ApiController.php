@@ -193,6 +193,16 @@ Defined Methods:-
 
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
+
+                if($user->role_id != 2)
+                {
+                    return response()->json([
+                        'error' => true,
+                        'message' => 'Invalid credentials',
+                        'language_message_key' => 'invalid_credentials',
+                    ], 401);
+                }
+
                 $token = $user->createToken('authToken')->plainTextToken;
                 $fcm_ids = fetchDetails(UserFcm::class, ['user_id' => $user->id], 'fcm_id');
 
