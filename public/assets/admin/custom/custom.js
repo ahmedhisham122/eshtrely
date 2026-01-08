@@ -3655,7 +3655,7 @@ $(document).on("submit", "#save-product", function (e) {
 
     e.preventDefault();
     var product_type = $("#product-type").val();
-    // console.log(product_type);
+     console.log(product_type);
     var counter = 0;
     if (product_type != "undefined" && product_type != " ") {
         if ($.trim(product_type) == "simple_product") {
