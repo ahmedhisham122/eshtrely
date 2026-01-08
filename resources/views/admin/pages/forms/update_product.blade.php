@@ -291,7 +291,10 @@
                             </div>
                         </div>
                     </div>
-                   
+                    @include('components.product.update_custom_fields', [
+                                      'productCustomFieldValues' => $productCustomFieldValues,
+                                      'customFields' => $customFields,
+                                  ])
                 </div>
                 <div class="card p-5 mt-4">
                     <div class="row">
