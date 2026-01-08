@@ -3651,7 +3651,7 @@ $(document).on("change", "#download_link_type", function () {
 // save product
 
 $(document).on("submit", "#save-product", function (e) {
-    alert("test");
+  //  alert("test");
 
     e.preventDefault();
     var product_type = $("#product-type").val();

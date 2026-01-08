@@ -678,7 +678,7 @@
                                                     <input type="hidden" name="variant_stock_level_type">
                                                     <input type="hidden" name="variant_stock_status">
                                                     <select name="type" id="product-type" class="form-control form-select"
-                                                        data-placeholder=" Type to search and select type" disabled>
+                                                        data-placeholder=" Type to search and select type" >
                                                         <option value="">
                                                             {{ labels('admin_labels.select_type', 'Select Type') }}
                                                         </option>
