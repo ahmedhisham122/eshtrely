@@ -42,7 +42,7 @@ class FirebaseNotificationService
     }
     public function sendNotification($fcmMsg, $registrationIDsChunks, $customBodyFields = [], $title = "test title", $message = "test message", $type = "test type")
     {
-        $storeId = app(StoreService::class)->getStoreId();
+        /*$storeId = app(StoreService::class)->getStoreId();
         $storeId = $storeId ?: ($customBodyFields['store_id'] ?? "");
 
         $projectId = Setting::where('variable', 'firebase_project_id')->value('value');
@@ -89,16 +89,16 @@ class FirebaseNotificationService
                     ]
                 ];
 
-                $result = Http::withToken($accessToken) 
+                $result = Http::withToken($accessToken)
                     ->withHeaders([
-                        'Content-Type' => 'application/json', 
+                        'Content-Type' => 'application/json',
                     ])
                     ->post($url, $data);
 
                     // dd($result);
                 return $result;
             }
-        }
+        }*/
 
         return true;
     }
