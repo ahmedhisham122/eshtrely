@@ -917,7 +917,7 @@ class ProductService
             $variant->variant_ids = implode(',', $attributeValues->pluck('id')->toArray());
             $variant->attr_name = $attributeValues->pluck('attribute.name')->implode(' ');
             $variant->variant_values = $attributeValues->pluck('value')->implode(',');
-            $variant->swatche_type = $attributeValues->pluck('swatche_type')->implode(',');
+           /* $variant->swatche_type = $attributeValues->pluck('swatche_type')->implode(',');
             $variant->swatche_value_raw = $attributeValues->pluck('swatche_value')->implode(',');
 
             // Convert swatche values based on type
@@ -929,7 +929,7 @@ class ProductService
                 $swatcheFinal[] = in_array($type, ['1', '2']) ? ($swatcheValues[$i] ?? '') : '0';
             }
 
-            $variant->swatche_value = implode(',', $swatcheFinal);
+            $variant->swatche_value = implode(',', $swatcheFinal);*/
 
             // Decode images and convert to URLs
             $images = [];
