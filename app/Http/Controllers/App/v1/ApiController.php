@@ -6567,9 +6567,8 @@ Defined Methods:-
             ->orderByDesc('total_sales')
             ->limit(10)
             ->get();
-        // dd($top_selling_products);
 
-        // Step 2: Weekly sales calculations for best seller flag
+
 
         $weekly_sales = Product::where('store_id', $store_id)
             ->with([
@@ -6690,6 +6689,7 @@ Defined Methods:-
                 'price' => $price,
                 'type' => $product->type,
                 'tax' => $product->tax,
+                'seller' => $product->sellerStore,
                 'deliverable_zipcodes' => $product->deliverable_zipcodes,
                 'deliverable_type' => $product->deliverable_type,
                 'is_prices_inclusive_tax' => $product->is_prices_inclusive_tax,
