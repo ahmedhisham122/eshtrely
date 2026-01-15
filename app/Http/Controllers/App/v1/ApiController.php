@@ -7380,7 +7380,10 @@ Defined Methods:-
                         $subQuery->whereRaw('LOWER(name) LIKE ?', ["%{$keyword}%"])
                             ->orWhereHas('category', function ($q) use ($keyword) {
                                 $q->whereRaw('LOWER(name) LIKE ?', ["%{$keyword}%"]);
-                            });
+                            })
+                        ->orWhereHas('sellerStoreData', function ($q) use ($keyword) {
+                            $q->whereRaw('LOWER(store_name) LIKE ?', ["%{$keyword}%"]);
+                        });
                     });
                 }
             })->get();
