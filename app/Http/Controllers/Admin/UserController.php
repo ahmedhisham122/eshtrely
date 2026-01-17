@@ -21,6 +21,9 @@ use App\Traits\HandlesValidation;
 use App\Services\StoreService;
 use App\Services\MediaService;
 use App\Services\WalletService;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class UserController extends Controller
 {
     use HandlesValidation;
@@ -28,6 +31,61 @@ class UserController extends Controller
     {
         return view('admin/pages/forms/login');
     }
+
+    public function sendemail(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'business_name' => 'nullable|string',
+            'phone' => 'nullable|string',
+        ]);
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $name = $request->name;
+            $email = $request->email;
+            $business = $request->business_name ?? '';
+            $phone = $request->phone ?? '';
+
+            // Zoho SMTP settings
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.zoho.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'info@eshtrely.com'; // your Zoho email
+            $mail->Password   = 'Eshtrely@@246810';  // Zoho app password (not your login password)
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port       = 465;
+
+            $mail->setFrom('info@eshtrely.com', 'ESHTRELY');
+            $mail->addAddress('support@eshtrely.com');
+
+            $mail->isHTML(true);
+            $mail->Subject = 'New Seller Registration';
+            $mail->Body    = "
+            <b>Name:</b> $name <br>
+            <b>Email:</b> $email <br>
+            <b>Business:</b> $business <br>
+            <b>Phone:</b> $phone
+        ";
+
+            $mail->send();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => '✅ Your registration has been sent!'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => "❌ Mail could not be sent. Error: {$mail->ErrorInfo}"
+            ], 500);
+        }
+
+    }
+
     public function seller_login()
     {
         return view('seller/pages/forms/login');

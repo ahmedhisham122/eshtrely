@@ -66,9 +66,7 @@ Route::middleware(['CheckInstallation'])->group(function () {
         return response()->file(public_path('front-page.html'));
     });
 
-    Route::post('send_email', function () {
-        return include(public_path('send-email.php'));
-    });
+    Route::post('send_email', [UserController::class, 'sendemail']);
 
     // Route::get('/', Home::class)->name('home');
     Route::get('admin/register', [UserController::class, 'create']);
