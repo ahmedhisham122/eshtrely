@@ -62,7 +62,7 @@ Route::get('/manifest', function () {
 
 Route::middleware(['CheckInstallation'])->group(function () {
     Route::get('/', function () {
-        return response()->file(public_path('index.html'));
+        return response()->file(public_path('front-page.php'));
     });
     // Route::get('/', Home::class)->name('home');
     Route::get('admin/register', [UserController::class, 'create']);
