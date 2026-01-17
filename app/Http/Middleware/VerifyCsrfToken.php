@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         "admin/settings/*",
         "/payments/response*",
+        "/send_email",
         "/cart*",
         "/installer*",
         "/webhook/*",
