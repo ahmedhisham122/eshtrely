@@ -22,7 +22,6 @@ use App\Services\StoreService;
 use App\Services\MediaService;
 use App\Services\WalletService;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller
 {
